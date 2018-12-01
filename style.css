@@ -1,0 +1,69 @@
+body{
+	margin: 0px;
+	padding: 0px;
+	font-size: 0;
+}
+.container{
+	width: 100%;
+	font-size: 0;
+}
+
+.all{
+	width: 100%;
+	background: green; 
+	font-size: 0;
+	flex-direction: row;
+	display: inline-flex;
+}
+
+.all #connections{
+
+	width: 20%;
+	height: 100%;
+	background: lightblue;
+}
+.all #tables{
+	width: 20%;
+	height: 100%;
+	background: red;
+}
+.all #data{
+	width: 60%;
+	height: 100%;
+	background: grey;
+}
+
+.noData{
+	width: 100%;
+	background: green; 
+	font-size: 0;
+	flex-direction: row;
+	display: inline-flex;
+}
+
+.noData #connections{
+
+	width: 20%;
+	height: 100%;
+	background: lightblue;
+}
+.noData #tables{
+	width: 80%;
+	height: 100%;
+	background: red;
+}
+
+.onlyConnection{
+	width: 100%;
+	background: green; 
+	font-size: 0;
+	flex-direction: row;
+	display: inline-flex;
+}
+
+.onlyConnection #connections{
+
+	width: 100%;
+	height: 100%;
+	background: lightblue;
+}
