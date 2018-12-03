@@ -4,33 +4,18 @@
 	<script src="script.js"></script>	
 </head>
 <body>
-	<button onclick="showAll()">Show All</button>
-	<button onclick="hideData()">Hide Data</button>
-	<button onclick="onlyConnections()">Show Only Connections</button>
+	<button id="showAllButton">Show All</button>
+	<button id="showAllButData">Hide Data</button>
+	<button id="showOnlyConnections">Show Only Connections</button>
 	<div id="container" class="all">
 		<div id="connections">
+			<button id="addConnection">Add Connection</button>
 		</div>
 		<div id="tables">
+			<button id="addTable">Add Table</button>
 		</div>
 		<div id="data">
 		</div>
 	</div>
 </body>
 </html>
-
-<script type="text/javascript">
-	function showAll(){
-		console.log("Showing all");
-		document.getElementById('container').className = 'all';
-	}
-
-	function hideData(){
-		console.log("Showing noData");
-		document.getElementById('container').className = 'noData';
-	}
-
-	function onlyConnections(){
-		console.log("Showing onlyConnection");
-		document.getElementById('container').className = 'onlyConnection';
-	}
-</script>

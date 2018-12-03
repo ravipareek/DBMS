@@ -1,22 +1,19 @@
 body {
 	margin: 0px;
 	padding: 0px;
-	font-size: 0;
 }
 #container {
 	width: 100%;
-	font-size: 0;
 }
 
-.all, .noData, .onlyConnection {
+.all, .noData, .onlyConnections {
 	width: 100%;
 	background: green; 
-	font-size: 0;
 	flex-direction: row;
 	display: inline-flex;
 }
 
-.all > div, .noData > div, .onlyConnection > div {
+.all > div, .noData > div, .onlyConnections > div {
 	height: 100%;
 }
 
@@ -60,16 +57,31 @@ body {
 	display: none;
 }
 
-/* onlyConnection */
+/* onlyConnections */
 
-.onlyConnection #connections {
+.onlyConnections #connections {
 	width: 100%;
 }
 
-.onlyConnection #tables {
+.onlyConnections #tables {
 	display: none;
 }
 
-.onlyConnection #data {
+.onlyConnections #data {
 	display: none;
+}
+
+/* connections */
+
+#connections .connection, #tables .table {
+	min-height: 2em;
+	margin-bottom: 2px;
+	padding: 2px;
+}
+
+#connections .connection:hover,
+#connections .connection.active,
+#tables .table:hover,
+#tables .table.active {
+	background-color: green;
 }
