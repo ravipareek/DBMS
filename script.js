@@ -29,7 +29,7 @@ class Data {
     }
 
     addConnection(connection) {
-        connection = connection || new Connection(this.connections.length);
+        connection = connection || new Connection(this);
         this.connections.push(connection);
         console.log('Added connection!');
         this.delegate.connectionsDidChange(this.connections);
@@ -57,37 +57,40 @@ class Data {
 }
 
 class Connection {
-    constructor(id, name) {
-        this.id = id;
+    constructor(data, name) {
+        this.data = data;
+        this.id = data.connections.length;
         this.name = name || 'New Connection';
         this.tables = [];
     }
 
     addTable(table) {
-        table = table || new Table(this.tables.length);
+        table = table || new Table(this);
         this.tables.push(table);
         console.log('Added table!');
-        this.delegate.tablesDidChange(this.tables);
+        this.data.delegate.tablesDidChange(this.tables);
     }
 }
 
 class Table {
-    constructor(id, name, schema) {
-        this.id = id
+    constructor(connection, name, schema) {
+        this.connection = connection;
+        this.id = connection.tables.length;
         this.name = name || 'New Table';
         this.schema = schema || new Schema();
         this.records = [];
     }
 
     addRecord(record) {
-        record = record || new Record(this.records.length);
+        record = record || new Record(this);
         this.records.push(record);
     }
 }
 
 class Record {
-    constructor(id, value) {
-        this.id = id;
+    constructor(table, value) {
+        this.table = table;
+        this.id = table.records.length;
         this.value = value || {newColumn: 'newValue'};
     }
 }
@@ -131,7 +134,7 @@ class View {
         document.querySelectorAll('#tables .table')
             .forEach(e => e.parentNode.removeChild(e));
         for (const table of tables) {
-            document.getElementById('Tables').appendChild(
+            document.getElementById('tables').appendChild(
                 this.makeTableDiv(table, table === this.data.activeTable));
         }
     }
@@ -178,7 +181,7 @@ class View {
         }
         div.innerHTML = table.name;
         div.addEventListener('click', (e) => {
-            this.data.activetable = table;
+            this.data.activeTable = table;
             document.getElementById('addTable')
                 .onclick = () => table.addTable();
             this.tablesDidChange();
