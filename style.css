@@ -1,14 +1,14 @@
-body{
+body {
 	margin: 0px;
 	padding: 0px;
 	font-size: 0;
 }
-.container{
+#container {
 	width: 100%;
 	font-size: 0;
 }
 
-.all{
+.all, .noData, .onlyConnection {
 	width: 100%;
 	background: green; 
 	font-size: 0;
@@ -16,54 +16,60 @@ body{
 	display: inline-flex;
 }
 
-.all #connections{
-
-	width: 20%;
+.all > div, .noData > div, .onlyConnection > div {
 	height: 100%;
+}
+
+#connections {
 	background: lightblue;
 }
-.all #tables{
-	width: 20%;
-	height: 100%;
+
+#tables {
 	background: red;
 }
-.all #data{
-	width: 60%;
-	height: 100%;
+
+#data {
 	background: grey;
 }
 
-.noData{
-	width: 100%;
-	background: green; 
-	font-size: 0;
-	flex-direction: row;
-	display: inline-flex;
-}
+/* all */
 
-.noData #connections{
-
+.all #connections {
 	width: 20%;
-	height: 100%;
-	background: lightblue;
 }
-.noData #tables{
+
+.all #tables {
+	width: 20%;
+}
+
+.all #data {
+	width: 60%;
+}
+
+/* noData */
+
+.noData #connections {
+	width: 20%;
+}
+
+.noData #tables {
 	width: 80%;
-	height: 100%;
-	background: red;
 }
 
-.onlyConnection{
-	width: 100%;
-	background: green; 
-	font-size: 0;
-	flex-direction: row;
-	display: inline-flex;
+.noData #data {
+	display: none;
 }
 
-.onlyConnection #connections{
+/* onlyConnection */
 
+.onlyConnection #connections {
 	width: 100%;
-	height: 100%;
-	background: lightblue;
+}
+
+.onlyConnection #tables {
+	display: none;
+}
+
+.onlyConnection #data {
+	display: none;
 }

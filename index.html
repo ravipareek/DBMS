@@ -1,31 +1,18 @@
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">	
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js"></script>	
 </head>
 <body>
 	<button onclick="showAll()">Show All</button>
 	<button onclick="hideData()">Hide Data</button>
 	<button onclick="onlyConnections()">Show Only Connections</button>
-	<div class="container">
-		<div class="all">
-			<div id="connections">
-			</div>
-			<div id="tables">
-			</div>
-			<div id="data">
-			</div>
+	<div id="container" class="all">
+		<div id="connections">
 		</div>
-
-		<div class="noData">
-			<div id="connections">
-			</div>
-			<div id="tables">
-			</div>
+		<div id="tables">
 		</div>
-
-		<div class="onlyConnection">
-			<div id="connections">
-			</div>
+		<div id="data">
 		</div>
 	</div>
 </body>
@@ -33,23 +20,17 @@
 
 <script type="text/javascript">
 	function showAll(){
-		alert("Showing all");
-		document.getElementsByClassName('noData')[0].style.display = 'none';
-		document.getElementsByClassName('onlyConnection')[0].style.display = 'none';
-		document.getElementsByClassName('all')[0].style.display = 'inline-flex';
+		console.log("Showing all");
+		document.getElementById('container').className = 'all';
 	}
 
 	function hideData(){
-		alert("Hiding Data");
-		document.getElementsByClassName('noData')[0].style.display = 'inline-flex';
-		document.getElementsByClassName('onlyConnection')[0].style.display = 'none';
-		document.getElementsByClassName('all')[0].style.display = 'none';
+		console.log("Showing noData");
+		document.getElementById('container').className = 'noData';
 	}
 
 	function onlyConnections(){
-		alert("Showing only Connections");
-		document.getElementsByClassName('noData')[0].style.display = 'none';
-		document.getElementsByClassName('onlyConnection')[0].style.display = 'inline-flex';
-		document.getElementsByClassName('all')[0].style.display = 'none';	
+		console.log("Showing onlyConnection");
+		document.getElementById('container').className = 'onlyConnection';
 	}
 </script>
