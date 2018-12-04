@@ -68,20 +68,24 @@ body {
 
 .all #tables {
 	width: 20%;
+	box-sizing: border-box;
 }
 
 .all #data {
 	width: 60%;
+	box-sizing: border-box;
 }
 
 /* noData */
 
 .noData #connections {
 	width: 20%;
+	box-sizing: border-box;
 }
 
 .noData #tables {
 	width: 80%;
+	box-sizing: border-box;
 }
 
 .noData #data {
