@@ -1,12 +1,14 @@
 const posts = {
-    "Header":["ID", "Authour_ID"],
+    "Header":["ID", "Authour_ID", "Release-Date"],
     "Content":[
-        [1, 3],
-        [2, 5],
-        [3, 3],
-        [4, 5]
+        [1, 3, new Date()],
+        [2, 5, new Date()],
+        [3, 3, new Date()],
+        [4, 5, new Date()]
     ]
 };
+
+var currentData = {};
 
 function addRow( data, header = false) {
    var row = document.createElement("tr");
