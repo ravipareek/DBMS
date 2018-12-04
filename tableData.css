@@ -1,3 +1,94 @@
 #data {
-    background-color: green;
+    background-color: #eeeeee;
 }
+
+#data .dataArea {
+    padding-top: 20px;
+    border-top: 2px solid black;
+    display: flex;
+}
+
+#data .dataArea #tableData {
+    flex-grow: 1;
+}
+
+#tableData table {
+    width: 100%;
+}
+
+#tableDataOptionsButton > i {
+    padding-top: 10px;
+    min-width: 20px;
+    text-align: center;
+}
+#tableDataOptionsButton > i:hover {
+   cursor: pointer;
+    color: gray;
+}
+
+#tableDataOptions {
+    min-width: 150px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+#tableDataOptions .popuptext > div {
+    padding-left: 5px;
+    float: left;
+}
+
+#tableDataOptions .popuptext {
+    opacity: 0;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    right: 0%;
+    margin-left: -80px;
+    text-align: center;
+}
+
+#tableDataOptions .popuptext::after {
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: transparent;
+    border-right-color: #555;
+    border-width: 10px;
+    top: 8px;
+}
+
+
+#data .name {
+    font-size: 25px;
+}
+
+#tableData table, #tableData th, #tableData td {
+    background: white;
+    text-align: left;
+    border: 1px solid black;
+}
+
+#tableData th, #tableData td {
+    padding: 5px;
+}
+
+#tableData tr th> :nth-child(2) {
+    padding-left: 5px;
+}
+
+#tableData tr th> :nth-child(2):hover, #tableData tr th> :nth-child(3):hover{
+    color: grey;
+    cursor: pointer;
+}
+

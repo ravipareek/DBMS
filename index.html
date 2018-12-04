@@ -5,8 +5,11 @@
 	<script src="main.js"></script>
 	<script src="controller.js"></script>
 	<script src="model.js"></script>
+	<script src="tableData.js"></script>
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
-<body>
+<body onload="selectTable()">
 	<button id="showAllButton">Show All</button>
 	<button id="showAllButData">Hide Data</button>
 	<button id="showOnlyConnections">Show Only Connections</button>
@@ -25,7 +28,25 @@
 		</div>
 		<div id="data">
 			<div class="content">
-				<h3>Table Name</h3>
+				<a class="name">Table Name</a>
+
+				<div class="dataArea">
+					<div id="tableData" class="table">
+						<table>
+							<tr>
+								<th>ID</th>
+								<th>Author_ID</th>
+							</tr>
+						</table>
+					</div>
+					<div id="tableDataOptionsButton">
+						<i class="fas fa-ellipsis-v" onclick="popup('#tableDataOptions .popuptext')"></i>
+					</div>
+					<div id="tableDataOptions">
+						<div class="popuptext" tabindex="0">
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
