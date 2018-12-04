@@ -1,6 +1,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="tableData.css">
 	<script src="main.js"></script>
 	<script src="controller.js"></script>
 	<script src="model.js"></script>
@@ -11,14 +12,21 @@
 	<button id="showOnlyConnections">Show Only Connections</button>
 	<div id="container" class="all">
 		<div id="connections">
-			<button id="addConnection">Add Connection</button>
-			<button id="removeConnection">Remove Connection</button>
+			<div class="content">
+				<button id="addConnection">Add Connection</button>
+				<button id="removeConnection">Remove Connection</button>
+			</div>
 		</div>
 		<div id="tables">
-			<button id="addTable">Add Table</button>
-			<button id="removeTable">Remove Table</button>
+			<div class="content">
+				<button id="addTable">Add Table</button>
+				<button id="removeTable">Remove Table</button>
+			</div>
 		</div>
 		<div id="data">
+			<div class="content">
+				<h3>Table Name</h3>
+			</div>
 		</div>
 	</div>
 </body>

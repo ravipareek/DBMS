@@ -1,3 +1,7 @@
+:root {
+	--clr-border: black;
+}
+
 body {
 	margin: 0px;
 	padding: 0px;
@@ -15,6 +19,33 @@ body {
 
 .all > div, .noData > div, .onlyConnections > div {
 	height: 100%;
+	border: 4px solid var(--clr-border);
+}
+
+.all > div:nth-child(1), .noData > div {
+	border-right: 2px solid var(--clr-border);
+}
+
+.noData > div:nth-child(2) {
+	border-left: 2px solid var(--clr-border);
+}
+
+.all > div:nth-child(2) {
+	border-left: 2px solid var(--clr-border);
+	border-right: 2px solid var(--clr-border);
+}
+
+.all > div:nth-child(3) {
+	border-left: 2px solid var(--clr-border);
+}
+
+
+
+
+
+.content {
+	height: 100%;
+	padding: 10px;
 }
 
 #connections {
@@ -23,10 +54,6 @@ body {
 
 #tables {
 	background: red;
-}
-
-#data {
-	background: grey;
 }
 
 /* all */
