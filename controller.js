@@ -73,8 +73,9 @@ function AppController(_model) {
         if (newActive) {
             document.getElementById(`connection-${newActive.id}`)
                 .classList.add('active');
-            connectionController = new ConnectionController(newActive);
+            connectionController = new ConnectionController(newActive, this);
             newActive.setDelegate(connectionController);
+            this.showAllButData();
         }
     }
     this.connectionWasRemoved = function(oldConnection) {
@@ -94,6 +95,16 @@ function AppController(_model) {
         }
     }
 
+    //
+
+    this.activeTableDidChange = function(oldActive, newActive) {
+        if (newActive) {
+            this.showAllColumns();
+        }
+    }
+
+    //
+
     function makeConnectionDiv(newConnection) {
         let div = document.createElement('div');
         div.id = `connection-${newConnection.id}`;
@@ -108,9 +119,10 @@ function AppController(_model) {
     model.setDelegate(this);
 }
 
-function ConnectionController(_connection) {
+function ConnectionController(_connection, _parent) {
     let connection = _connection;
     let tableController = null;
+    let parent = _parent;
 
     // Bind buttons
     document.getElementById('addTable').onclick = () => {
@@ -142,6 +154,8 @@ function ConnectionController(_connection) {
             tableController = new TableController(newActive);
             newActive.setDelegate(tableController);
         }
+        if (parent)
+            parent.activeTableDidChange(oldActive, newActive);
     }
     this.tableWasRemoved = function(oldTable) {
         let oldTableDiv = document.getElementById(`table-${oldTable.id}`);
