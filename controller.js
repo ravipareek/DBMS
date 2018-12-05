@@ -100,6 +100,7 @@ function AppController(_model) {
     this.activeTableDidChange = function(oldActive, newActive) {
         if (newActive) {
             this.showAllColumns();
+            document.querySelector('#data h1').innerHTML = newActive.name;
         }
     }
 

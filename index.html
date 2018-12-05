@@ -8,6 +8,7 @@
 	<script src="tableData.js"></script>
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body id="app" onload="selectTable()">
 	<button id="showAllButton">Show All</button>
@@ -15,6 +16,7 @@
 	<button id="showOnlyConnections">Show Only Connections</button>
 	<div id="container" class="onlyConnections">
 		<div id="connections" class="content">
+			<h1>Databases</h1>
 			<div class="status-bar">
 				<button id="removeConnection"><i class="fas fa-minus"></i></button>
 				<button id="addConnection"><i class="fas fa-plus"></i></button>
@@ -22,6 +24,7 @@
 			</div>
 		</div>
 		<div id="tables" class="content">
+			<h1>Tables</h1>
 			<div class="status-bar">
 				<button id="removeTable"><i class="fas fa-minus"></i></button>
 				<button id="addTable"><i class="fas fa-plus"></i></button>
@@ -29,7 +32,8 @@
 			</div>
 		</div>
 		<div id="data" class="content">
-			<a class="name">Table Name</a>
+			<h1>Records</h1>
+			<!-- <a class="name">Table Name</a> -->
 
 			<div class="dataArea">
 				<div id="tableData" class="table">
