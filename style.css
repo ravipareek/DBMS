@@ -226,3 +226,15 @@ body {
 .content-container.inactive {
 	display: none;
 }
+
+.empty-item {
+	display: none;
+	color: grey;
+	min-height: 2em;
+	line-height: 2em;
+	padding: 2px 10px;
+}
+
+.empty-item.active {
+	display: block;
+}

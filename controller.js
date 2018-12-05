@@ -129,6 +129,9 @@ function ConnectionController(_connection, _parent) {
 
 
     this.tableWasAdded = function(newTable) {
+        let emptyItemDiv = document.querySelector('#tables .empty-item.active');
+        if (emptyItemDiv)
+            emptyItemDiv.classList.remove('active');
         let newTableDiv = makeTableDiv(newTable);
         document.getElementById('tables').appendChild(newTableDiv);
     }
@@ -161,9 +164,9 @@ function ConnectionController(_connection, _parent) {
     this.tablesDidChange = function(newTables) {
         document.querySelectorAll('#tables .table')
             .forEach(e => e.parentNode.removeChild(e));
+        document.querySelector('#tables .empty-item').classList.add('active');
         for (const newTable of newTables) {
-            let newTableDiv = makeTableDiv(newTable);
-            document.getElementById('tables').appendChild(newTableDiv);
+            this.tableWasAdded(newTable);
         }
     }
 
