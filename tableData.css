@@ -13,6 +13,7 @@
 #tableData table {
     width: 100%;
     max-width: 600px;
+    max-height: 575px;
     display: block;
     overflow-x: auto;
     white-space: nowrap;
@@ -60,9 +61,10 @@
 
 #dataFilterPopup.popuptext {
     opacity: 0;
-    width: 140px;
-    margin-top: -150px;
-    margin-left: -15px;
+    width: 420px;
+    margin-top: -198px;
+    margin-left: -295px;
+    min-height: 150px;
 }
 
 #dataFilterPopup.popuptext::after {
@@ -72,7 +74,7 @@
 #dataOther.popuptext {
     opacity: 0;
     width: 140px;
-    margin-top: -140px;
+    margin-top: -136px;
     margin-left: -17px;
     border-bottom-right-radius: 0px;
     height: auto;
@@ -82,11 +84,12 @@
     right: 0px;
 }
 
-#dataOther.popuptext > .content {
+#dataOther.popuptext > .content, #dataFilterPopup.popuptext > .content {
     padding: 5px;
 }
 
-#dataOther.popuptext > .content > button {
+#dataOther.popuptext > .content > button,
+#dataFilterPopup.popuptext > .content > button {
     margin-top: 2px;
     margin-bottom: 2px;
     padding: 5px;
@@ -97,9 +100,16 @@
 
 }
 
-#dataOther.popuptext > .content > button:hover {
+#dataOther.popuptext > .content > button:hover,
+#dataFilterPopup.popuptext > .content > button:hover  {
    background-color: #2098d1;
 
+}
+
+#dataFilterPopup.popuptext > .content >textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
 }
 
 
