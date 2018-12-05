@@ -11,9 +11,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body id="app" onload="selectTable()">
-	<button id="showAllButton">Show All</button>
-	<button id="showAllButData">Hide Data</button>
-	<button id="showOnlyConnections">Show Only Connections</button>
 	<div id="container" class="onlyConnections">
 		<div id="connections" class="content">
 			<h1>Databases</h1>
@@ -54,7 +51,8 @@
 			</div>
 
 			<div class="status-bar">
-				<button id="removeRow"><i class="fas fa-minus"></i></button>
+				<button class="cancel" onclick="cancelCurAction()"><i class="fas fa-ban"></i></button>
+				<button id="removeRow" onclick="removeDataRow()"><i class="fas fa-minus"></i></button>
 				<button id="addRow"><i class="fas fa-plus"></i></button>
 				<button id="otherData"><i class="fas fa-ellipsis-v"></i></button>
 			</div>

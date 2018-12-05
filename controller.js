@@ -44,16 +44,6 @@ function AppController(_model) {
         document.getElementById('connections').className = 'content show';
     }
 
-    document.getElementById('showAllButton').onclick = () => {
-        this.showAllColumns()
-    };
-    document.getElementById('showAllButData').onclick = () => {
-        this.showAllButData()
-    };
-    document.getElementById('showOnlyConnections').onclick = () => {
-        this.showOnlyConnections()
-    };
-
     // Delegate methods
 
     this.connectionWasAdded = function(newConnection) {

@@ -1,17 +1,29 @@
-const posts = {
-    "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
-    "Content":[
-        [1, 3, new Date(), new Date(), new Date(), new Date()],
-        [2, 5, new Date(), new Date(), new Date(), new Date()],
-        [3, 3, new Date(), new Date(), new Date(), new Date()],
-        [4, 5, new Date(), new Date(), new Date(), new Date()]
-    ]
+const tables = {
+    "posts": {
+        "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
+        "Content":[
+            [1, 3, new Date(), new Date(), new Date(), new Date()],
+            [2, 5, new Date(), new Date(), new Date(), new Date()],
+            [3, 3, new Date(), new Date(), new Date(), new Date()],
+            [4, 5, new Date(), new Date(), new Date(), new Date()]
+        ]
+    },
+    "default": {
+        "Header":["ID", "dsadsa", "dsa"],
+        "Content":[
+            [1, 3, new Date()],
+            [2, 5, new Date()],
+            [3, 3, new Date()],
+            [4, 5, new Date()]
+        ]
+    }
 };
 
 var currentData = {};
 var colStates = [];
+var curAction = null;
 
-function addRow( data, header = false) {
+function addRow(data, header = false) {
    var row = document.createElement("tr");
    data.forEach((content, index) => {
        if (colStates[index]) {
@@ -65,7 +77,8 @@ function addColOption(data, num) {
 }
 
 function selectTable(tableName = "posts") {
-    currentData = posts;
+    tables[tableName] = !!tables[tableName] ? tables[tableName] : tables["default"];
+    currentData = tableName;
     colStates = [];
 
     // Fill data options
@@ -74,7 +87,7 @@ function selectTable(tableName = "posts") {
         optionsHolder.removeChild(optionsHolder.firstChild);
     }
 
-    posts.Header.forEach((content,index) => {
+    tables[currentData].Header.forEach((content,index) => {
         colStates[index] = true;
         optionsHolder.appendChild(addColOption(content, index));
     });
@@ -86,8 +99,8 @@ function tableUpdate() {
     let tableHolder = document.getElementById("tableData");
     let table = document.createElement("table");
 
-    table.appendChild(addRow(currentData.Header, true));
-    currentData.Content.forEach((content) => {
+    table.appendChild(addRow(tables[currentData].Header, true));
+    tables[currentData].Content.forEach((content) => {
         table.appendChild(addRow(content));
     });
 
@@ -95,6 +108,20 @@ function tableUpdate() {
         tableHolder.removeChild(tableHolder.firstChild);
     }
     tableHolder.appendChild(table);
+}
+
+
+function removeDataRow() {
+    var body = document.querySelector('body');
+    body.classList.add("removeDataRow");
+    curAction = "delete";
+}
+
+function cancelCurAction() {var body = document.querySelector('body');
+    if (curAction = "delete") {
+        body.classList.remove("removeDataRow");
+    }
+    curAction = null;
 }
 
 function popup(query) {
