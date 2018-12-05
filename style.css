@@ -10,6 +10,25 @@ body {
 	margin: 0px;
 	padding: 0px;
 }
+
+#app {
+	width: 1060px;
+	height: 660px;
+	background-color: #757575;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+@media screen and (max-width: 1000px) {
+	#app {
+		display: none;
+	}
+}
+
 #container {
 	width: 100%;
 }
@@ -64,6 +83,7 @@ body {
 
 .all #connections {
 	width: 20%;
+	box-sizing: border-box;
 }
 
 .all #tables {
@@ -96,6 +116,7 @@ body {
 
 .onlyConnections #connections {
 	width: 100%;
+	box-sizing: border-box;
 }
 
 .onlyConnections #tables {
