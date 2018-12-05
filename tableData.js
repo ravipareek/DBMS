@@ -217,6 +217,11 @@ function popup(query) {
     }
 }
 
+function notExist(query) {
+    alert("This feature has not been implemented");
+    popup(query);
+}
+
 function downloadTable() {
     var link = document.createElement("a");
     link.download = currentData+".csv";
