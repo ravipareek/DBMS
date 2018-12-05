@@ -23,7 +23,6 @@ body {
 	right: 0;
 	margin: auto;
 
-	/*font-family: Verdana, Geneva, sans-serif;*/
 	font-family: 'Raleway', sans-serif;
 }
 
@@ -44,7 +43,6 @@ body {
 
 .all, .noData, .onlyConnections {
 	width: 100%;
-	background: green; 
 	flex-direction: row;
 	display: inline-flex;
 }
