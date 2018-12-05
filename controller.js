@@ -65,7 +65,6 @@ function AppController(_model) {
                 .classList.add('active');
             connectionController = new ConnectionController(newActive, this);
             newActive.setDelegate(connectionController);
-            this.showAllColumns();
         }
         setEmptyTable();
             
@@ -91,7 +90,6 @@ function AppController(_model) {
 
     this.activeTableDidChange = function(oldActive, newActive) {
         if (newActive) {
-            this.showAllColumns();
             document.querySelector('#data h1').innerHTML = newActive.name;
         }
     }
