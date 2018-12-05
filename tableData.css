@@ -3,8 +3,6 @@
 }
 
 #data .dataArea {
-    padding-top: 20px;
-    border-top: 2px solid black;
     display: flex;
 }
 
