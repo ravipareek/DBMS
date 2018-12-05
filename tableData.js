@@ -1,11 +1,23 @@
 const tables = {
     "Posts": {
+        "lookup":[1, "Authors"],
         "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
         "Content":[
             [1, 3, new Date(), new Date(), new Date(), new Date()],
             [2, 5, new Date(), new Date(), new Date(), new Date()],
             [3, 3, new Date(), new Date(), new Date(), new Date()],
             [4, 5, new Date(), new Date(), new Date(), new Date()]
+        ]
+    },
+    "Authors": {
+        "lookup":[1, "Posts"],
+        "Header":["ID", "dsadsa", "dsa"],
+        "Content":[
+            [1, 1, new Date()],
+            [2, 2, new Date()],
+            [3, 3, new Date()],
+            [4, 2, new Date()],
+            [5, 3, new Date()],
         ]
     },
     "default": {
@@ -22,6 +34,70 @@ var currentData = {};
 var colStates = [];
 var curAction = null;
 var curSort = [0,0];
+var popupOpen = null;
+
+function addKeyPopup(x, y, index) {
+    if (!!popupOpen) {
+        popup(popupOpen[0], popupOpen[1]);
+    }
+
+    let popupDiv = document.createElement('div');
+    popupDiv.setAttribute("class", `popuptext class${index}`);
+    popupDiv.setAttribute("tabindex", "0");
+    popupDiv.setAttribute("id", "dataKeyLink");
+    popupDiv.style = `top: ${y}; left:${x}`;
+
+    let content = document.createElement('div');
+    content.className = "content";
+
+    //Fill with content
+    let otherTable = tables[currentData].lookup[1];
+    let foreginKey = tables[currentData].Content[index][tables[currentData].lookup[0]];
+    let foreignData = tables[otherTable].Content.find((tmp) => {return tmp[0] === foreginKey});
+
+    let table = document.createElement('table');
+    for (let i =0; i < tables[otherTable].Header.length; i++) {
+
+        let tr = document.createElement('tr');
+        let th = document.createElement('th');
+        th.innerText = tables[otherTable].Header[i];
+        let td = document.createElement('td');
+        td.innerText = foreignData[i];
+
+        tr.appendChild(th)
+        tr.appendChild(td);
+        table.appendChild(tr);
+    }
+
+    let title = document.createElement('h3');
+    title.innerText = `Table ${otherTable}`;
+
+    content.appendChild(title);
+    content.appendChild(table);
+    popupDiv.appendChild(content);
+    document.body.appendChild(popupDiv);
+
+    // Ensure popup is removed once done
+    popupOpen = [`#dataKeyLink.popuptext.class${index}`, () => {
+        document.body.removeChild(popupDiv);
+        popupOpen = null;
+    }];
+    popup(popupOpen[0], popupOpen[1]);
+}
+
+function addRowBasic(data, header = false) {
+    var row = document.createElement("tr");
+    data.forEach((content, index2) => {
+        const col = document.createElement(header ? "th" : "td");
+        const text = document.createElement('a');
+        text.innerText = content;
+        col.appendChild(text);
+        console.log(index2)
+        row.appendChild(col)
+    });
+    return row;
+}
+
 
 function addRow(data, header = false, index) {
    var row = document.createElement("tr");
@@ -31,9 +107,15 @@ function addRow(data, header = false, index) {
            const text = document.createElement('a');
            text.innerText = content;
            col.appendChild(text);
+           console.log(index2)
+           console.log(currentData)
+           if (header) {
 
-           if (content === "~NO DATA~") {
+           } else if (content === "~NO DATA~") {
                col.classList.add("edit");
+           } else if (!!tables[currentData].lookup && index2 === tables[currentData].lookup[0]) {
+
+               col.classList.add("viewConnection");
            }
 
            col.onclick = () => {
@@ -69,7 +151,10 @@ function addRow(data, header = false, index) {
                        }
                    });
                }
-               console.log("  |" + content + "|  ");
+               else if (!!tables[currentData].lookup && index2 === tables[currentData].lookup[0]) {
+                   var bounds = col.getBoundingClientRect();
+                   addKeyPopup(bounds.left + (bounds.width/2), bounds.bottom, index);
+               }
            };
 
            // Add sorting
@@ -219,7 +304,7 @@ function cancelCurAction() {var body = document.querySelector('body');
     curAction = null;
 }
 
-function popup(query) {
+function popup(query, onClose) {
     let container = document.querySelector(query);
     let bounds = container.getBoundingClientRect();
 
@@ -228,6 +313,9 @@ function popup(query) {
         container.classList.add('hide');
 
         removeClickEvent("popupHandler");
+        if (!!onClose) {
+            onClose();
+        }
     } else {
         if (container.classList.contains('hide')) {
             container.classList.remove('hide');
@@ -239,9 +327,9 @@ function popup(query) {
                 let mouseX = event.pageX;
                 let mouseY = event.pageY;
                 if (mouseX < bounds.left || mouseX > bounds.right) {
-                    popup(query)
+                    popup(query, onClose)
                 } else if (mouseY > bounds.bottom || mouseY < bounds.top) {
-                    popup(query)
+                    popup(query, onClose)
                 }
             });
         }, 500);

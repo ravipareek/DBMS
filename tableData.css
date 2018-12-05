@@ -112,6 +112,43 @@
     resize: none;
 }
 
+#dataKeyLink.popuptext {
+    margin-top: 5px;
+    min-height: 100px;
+}
+
+#dataKeyLink.popuptext::after {
+    bottom: 100%;
+    top: initial;
+    left: 50%;
+    border-color: transparent;
+    border-bottom-color: #555;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+
+#dataKeyLink {
+    position: fixed;
+    transform: translate(-50%, 0%);
+    width: 420px;
+}
+#dataKeyLink > .content > h3 {
+    text-align: left;
+    margin: 0;
+    padding-bottom: 10px;
+}
+#dataKeyLink > .content {
+    padding: 5px;
+}
+#dataKeyLink > .content > table > tr > th, #dataKeyLink > .content > table > tr > td{
+   background: white;
+}
+
+#dataKeyLink > .content > table > tr > th, #dataKeyLink > .content > table > tr > td{
+    border: 1px solid black;
+}
+
 
 #data .name {
     font-size: 25px;
@@ -142,7 +179,8 @@
     color: #757575;
 }
 
-#tableData td.edit:hover {
+#tableData td.edit:hover,
+#tableData td.viewConnection:hover {
     background: #2066D9;
     font-weight: bolder;
     color: white;
