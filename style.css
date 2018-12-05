@@ -200,3 +200,27 @@ body {
 	from {opacity: 1;}
 	to {opacity:0;}
 }
+
+.empty-container {
+	display: none;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	z-index: 1;
+}
+
+.empty-area {
+	color: grey;
+	width: 100px;
+    margin: auto;
+    top: 50%;
+    position: relative;
+}
+
+.empty-container.active {
+	display: block;
+}
+
+.content-container.inactive {
+	display: none;
+}

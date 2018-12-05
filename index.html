@@ -10,8 +10,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
-<body id="app" onload="selectTable()">
-	<div id="container" class="onlyConnections">
+<body id="app">
+	<div id="container" class="all">
 		<div id="connections" class="content">
 			<h1>Databases</h1>
 			<div class="status-bar">
@@ -29,32 +29,31 @@
 			</div>
 		</div>
 		<div id="data" class="content">
-			<h1>Records</h1>
-			<!-- <a class="name">Table Name</a> -->
-
-			<div class="dataArea">
-				<div id="tableData" class="table">
-					<table>
-						<tr>
-							<th>ID</th>
-							<th>Author_ID</th>
-						</tr>
-					</table>
-				</div>
-				<div id="tableDataOptionsButton">
-					<i class="fas fa-ellipsis-v" onclick="popup('#tableDataOptions .popuptext')"></i>
-				</div>
-				<div id="tableDataOptions">
-					<div class="popuptext" tabindex="0">
-					</div>
-				</div>
+			<div class="empty-container active">
+				<div class="empty-area">No Records...</div>
 			</div>
 
-			<div class="status-bar">
-				<button class="cancel" onclick="cancelCurAction()"><i class="fas fa-ban"></i></button>
-				<button id="removeRow" onclick="removeDataRow()"><i class="fas fa-minus"></i></button>
-				<button id="addRow"><i class="fas fa-plus"></i></button>
-				<button id="otherData"><i class="fas fa-ellipsis-v"></i></button>
+			<div class="content-container inactive">
+				<h1></h1>
+				<div class="dataArea">
+					<div id="tableData" class="table">
+						<table></table>
+					</div>
+					<div id="tableDataOptionsButton">
+						<i class="fas fa-ellipsis-v" onclick="popup('#tableDataOptions .popuptext')"></i>
+					</div>
+					<div id="tableDataOptions">
+						<div class="popuptext" tabindex="0">
+						</div>
+					</div>
+				</div>
+
+				<div class="status-bar">
+					<button class="cancel" onclick="cancelCurAction()"><i class="fas fa-ban"></i></button>
+					<button id="removeRow" onclick="removeDataRow()"><i class="fas fa-minus"></i></button>
+					<button id="addRow"><i class="fas fa-plus"></i></button>
+					<button id="otherData"><i class="fas fa-ellipsis-v"></i></button>
+				</div>
 			</div>
 		</div>
 	</div>

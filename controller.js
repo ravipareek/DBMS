@@ -65,8 +65,10 @@ function AppController(_model) {
                 .classList.add('active');
             connectionController = new ConnectionController(newActive, this);
             newActive.setDelegate(connectionController);
-            this.showAllButData();
+            this.showAllColumns();
         }
+        setEmptyTable();
+            
     }
     this.connectionWasRemoved = function(oldConnection) {
         let oldConnectionDiv = document.getElementById(`connection-${oldConnection.id}`);
@@ -144,6 +146,7 @@ function ConnectionController(_connection, _parent) {
                 .classList.add('active');
             tableController = new TableController(newActive);
             newActive.setDelegate(tableController);
+            selectTable(newActive.name)
         }
         if (parent)
             parent.activeTableDidChange(oldActive, newActive);
@@ -184,6 +187,7 @@ function TableController(_table) {
     this.recordWasAdded = function(newRecord) {}
     this.activeRecordDidChange = function(oldActive, newActive) {}
     this.recordWasRemoved = function(records) {}
+    this.recordsDidChange = function(newRecords) {}
 
     table.setDelegate(this);
 }

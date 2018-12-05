@@ -1,5 +1,5 @@
 const tables = {
-    "posts": {
+    "Posts": {
         "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
         "Content":[
             [1, 3, new Date(), new Date(), new Date(), new Date()],
@@ -85,6 +85,9 @@ function addColOption(data, num) {
 }
 
 function selectTable(tableName = "posts") {
+    document.querySelector('#data .content-container').classList.remove('inactive');
+    document.querySelector('#data .empty-container').classList.remove('active');
+
     tables[tableName] = !!tables[tableName] ? tables[tableName] : tables["default"];
     currentData = tableName;
     colStates = [];
@@ -101,6 +104,14 @@ function selectTable(tableName = "posts") {
     });
 
     tableUpdate();
+}
+
+function setEmptyTable() {
+    document.querySelector('#data .content-container').classList.add('inactive');
+    document.querySelector('#data .empty-container').classList.add('active');
+    document.querySelector('#data h1').innerHTML = '';
+    document.querySelectorAll('#tableData table')
+        .forEach(e => e.parentNode.removeChild(e));
 }
 
 function tableUpdate() {
