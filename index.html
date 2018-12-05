@@ -17,7 +17,10 @@
 			<div class="status-bar">
 				<button id="removeConnection" title="Remove Connection"><i class="fas fa-minus"></i></button>
 				<button id="addConnection" title="Add Connection"><i class="fas fa-plus"></i></button>
-				<button id="otherConnection" title="Other Options"><i class="fas fa-ellipsis-v"></i></button>
+				<button id="otherConnection" onclick="popup('#connectionPopup.popuptext')"title="Other Options"><i class="fas fa-ellipsis-v"></i></button>
+                <div id="connectionPopup" class="popuptext" tabindex="0">
+                    "hi"
+                </div>
 			</div>
 		</div>
 		<div id="tables" class="content">
@@ -28,7 +31,10 @@
 			<div class="status-bar">
 				<button id="removeTable" title="Remove Table"><i class="fas fa-minus"></i></button>
 				<button id="addTable" title="Add Table"><i class="fas fa-plus"></i></button>
-				<button id="otherTable" title="Other Options"><i class="fas fa-ellipsis-v"></i></button>
+				<button id="otherTable" onclick="popup('#tablePopup.popuptext')" title="Other Options"><i class="fas fa-ellipsis-v"></i></button>
+                <div id="tablePopup" class="popuptext" tabindex="0">
+                    "hi"
+                </div>
 			</div>
 		</div>
 		<div id="data" class="content">
@@ -56,8 +62,13 @@
 					<button id="addRow" title="Add Row"  onclick="addDataRow()"><i class="fas fa-plus"></i></button>
 					<button title="Download Table" onclick="downloadTable()"><i class="fas fa-download"></i></button>
 					<button title="Export Schema" onclick="exportSchema()"><i class="fas fa-receipt"></i></button>
+                    <button title="Export Schema" onclick="popup('#dataFilterPopup.popuptext')"><i class="fas fa-filter"></i></button>
 					<button title="Other Options" id="otherData"><i class="fas fa-ellipsis-v"></i></button>
+                    <div id="dataFilterPopup" class="popuptext" tabindex="0">
+                        "hi"
+                    </div>
 				</div>
+
 			</div>
 		</div>
 	</div>

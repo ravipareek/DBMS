@@ -47,31 +47,28 @@
 #tableDataOptions .popuptext {
     opacity: 0;
     width: 140px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
     margin-left: -165px;
-    text-align: center;
 }
 
 #tableDataOptions .popuptext::after {
     left: 100%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
     border-color: transparent;
     border-left-color: #555;
     border-width: 10px;
     top: 8px;
 }
 
+#dataFilterPopup.popuptext {
+    opacity: 0;
+    width: 140px;
+    margin-top: -150px;
+    margin-left: -15px;
+    min-height: 100px;
+}
+
+#dataFilterPopup.popuptext::after {
+    right: 18px;
+}
 
 #data .name {
     font-size: 25px;

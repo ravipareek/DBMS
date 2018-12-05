@@ -238,3 +238,50 @@ body {
 .empty-item.active {
 	display: block;
 }
+
+.popuptext  {
+	width: 140px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 8px 0;
+	position: absolute;
+	z-index: 1;
+}
+
+.popuptext::after {
+	top: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: transparent;
+	border-top-color: #555;
+	border-width: 10px;
+}
+
+#tablePopup.popuptext {
+	opacity: 0;
+	margin-top: -150px;
+	margin-left: -15px;
+	min-height: 100px;
+}
+
+#tablePopup.popuptext::after {
+	right: 76px;
+}
+
+#connectionPopup.popuptext {
+	opacity: 0;
+	width: 200px;
+	margin-top: -150px;
+	margin-left: -70px;
+	min-height: 100px;
+}
+
+#connectionPopup.popuptext::after {
+	right: 80px;
+}
