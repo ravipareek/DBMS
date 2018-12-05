@@ -161,6 +161,11 @@ body {
 	padding: 2px 10px;
 }
 
+#connections .connection span,
+#tables .table span {
+	padding-left: 5px;
+}
+
 #connections .connection:hover,
 #connections .connection.active,
 #tables .table:hover,
@@ -285,3 +290,4 @@ body {
 #connectionPopup.popuptext::after {
 	right: 80px;
 }
+

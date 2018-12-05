@@ -97,10 +97,17 @@ function AppController(_model) {
     //
 
     function makeConnectionDiv(newConnection) {
+        let icon = document.createElement('i');
+        icon.classList.add('fas', 'fa-database');
+
+        let text = document.createElement('span');
+        text.innerHTML = newConnection.name;
+
         let div = document.createElement('div');
         div.id = `connection-${newConnection.id}`;
         div.classList.add('connection');
-        div.innerHTML = newConnection.name;
+        div.appendChild(icon);
+        div.appendChild(text);
         div.addEventListener('click', (e) => {
             model.setActiveConnection(newConnection);
         });
@@ -173,10 +180,17 @@ function ConnectionController(_connection, _parent) {
     }
 
     function makeTableDiv(newTable) {
+        let icon = document.createElement('i');
+        icon.classList.add('fas', 'fa-table');
+
+        let text = document.createElement('span');
+        text.innerHTML = newTable.name;
+
         let div = document.createElement('div');
         div.id = `table-${newTable.id}`;
         div.classList.add('table');
-        div.innerHTML = newTable.name;
+        div.appendChild(icon);
+        div.appendChild(text);
         div.addEventListener('click', (e) => {
             connection.setActiveTable(newTable);
         });
