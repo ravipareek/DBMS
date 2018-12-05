@@ -14,39 +14,6 @@ const tables = {
             [1, 3, new Date()],
             [2, 5, new Date()],
             [3, 3, new Date()],
-            [4, 5, new Date()],
-            [1, 3, new Date()],
-            [2, 5, new Date()],
-            [3, 3, new Date()],
-            [4, 5, new Date()],
-            [1, 3, new Date()],
-            [2, 5, new Date()],
-            [3, 3, new Date()],
-            [4, 5, new Date()],
-            [1, 3, new Date()],
-            [2, 5, new Date()],
-            [3, 3, new Date()],
-            [1, 3, new Date()],
-            [2, 5, new Date()],
-            [3, 3, new Date()],
-            [4, 5, new Date()],
-            [1, 3, new Date()],
-            [2, 5, new Date()],
-            [3, 3, new Date()],
-            [1, 3, new Date()],
-            [2, 5, new Date()],
-            [3, 3, new Date()],
-            [4, 5, new Date()],
-            [1, 3, new Date()],
-            [2, 5, new Date()],
-            [3, 3, new Date()],
-            [1, 3, new Date()],
-            [2, 5, new Date()],
-            [3, 3, new Date()],
-            [4, 5, new Date()],
-            [1, 3, new Date()],
-            [2, 5, new Date()],
-            [3, 3, new Date()]
         ]
     }
 };
@@ -54,6 +21,7 @@ const tables = {
 var currentData = {};
 var colStates = [];
 var curAction = null;
+var curSort = [0,0];
 
 function addRow(data, header = false, index) {
    var row = document.createElement("tr");
@@ -106,12 +74,31 @@ function addRow(data, header = false, index) {
 
            // Add sorting
            if (header) {
-               const up = document.createElement('i');
-               up.className = "far fa-arrow-alt-circle-up";
-               col.appendChild(up);
 
+               const up = document.createElement('i');
                const down = document.createElement('i');
+               up.className = "far fa-arrow-alt-circle-up";
                down.className = "far fa-arrow-alt-circle-down";
+               up.onclick = () => {
+                   curSort[0] = index2;
+                   curSort[1] = 1;
+                   tableUpdate();
+               };
+               down.onclick = () => {
+                   curSort[0] = index2;
+                   curSort[1] = 0;
+                   tableUpdate();
+               };
+
+
+               if (curSort[0] === index2) {
+                   if (!!curSort[1]) {
+                       up.className = "fas fa-arrow-circle-up"
+                   } else {
+                       down.className = "fas fa-arrow-circle-down"
+                   }
+               }
+               col.appendChild(up);
                col.appendChild(down);
            }
            row.appendChild(col)
@@ -189,6 +176,18 @@ function setEmptyTable() {
 function tableUpdate() {
     let tableHolder = document.getElementById("tableData");
     let table = document.createElement("table");
+
+    tables[currentData].Content.sort((a,b) => {
+        let aStr = a[curSort[0]].toString();
+        let bStr = b[curSort[0]].toString();
+        if (aStr < bStr) {
+            return !!curSort[1] ? 1 : -1;
+        }
+        if (aStr > bStr) {
+            return !!curSort[1] ? -1 : 1;
+        }
+        return 0;
+    });
 
     table.appendChild(addRow(tables[currentData].Header, true));
     tables[currentData].Content.forEach((content, index) => {
