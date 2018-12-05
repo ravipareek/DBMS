@@ -59,13 +59,12 @@ function addRow(data, header = false, index) {
                            tables[currentData].Content[index][index2] = input.value;
                        }
                    });
-                   addClickEvent("newDataInputHandler", (event) => {
+                   addClickEvent("newDataInputHandler"+index+index2, (event) => {
                        var bounds = input.getBoundingClientRect();
                        let mouseX = event.pageX;
                        let mouseY = event.pageY;
-                       if (mouseX < bounds.left || mouseX > bounds.right) {
-                           tableUpdate();
-                       } else if (mouseY > bounds.bottom || mouseY < bounds.top) {
+                       if (mouseX < bounds.left || mouseX > bounds.right || mouseY > bounds.bottom || mouseY < bounds.top) {
+                           removeClickEvent("newDataInputHandler"+index+index2)
                            tableUpdate();
                        }
                    });
