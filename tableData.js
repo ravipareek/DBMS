@@ -23,7 +23,7 @@ var currentData = {};
 var colStates = [];
 var curAction = null;
 
-function addRow(data, header = false) {
+function addRow(data, header = false, index) {
    var row = document.createElement("tr");
    data.forEach((content, index) => {
        if (colStates[index]) {
@@ -45,6 +45,14 @@ function addRow(data, header = false) {
            row.appendChild(col)
        }
    });
+   row.onclick = () => {
+       if (header)
+           return;
+      if (curAction = "delete") {
+          tables[currentData].Content.splice(index, 1);
+          tableUpdate();
+      }
+   };
    return row;
 
 }
@@ -100,8 +108,8 @@ function tableUpdate() {
     let table = document.createElement("table");
 
     table.appendChild(addRow(tables[currentData].Header, true));
-    tables[currentData].Content.forEach((content) => {
-        table.appendChild(addRow(content));
+    tables[currentData].Content.forEach((content, index) => {
+        table.appendChild(addRow(content, false, index));
     });
 
     while (tableHolder.firstChild) {
