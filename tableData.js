@@ -25,12 +25,53 @@ var curAction = null;
 
 function addRow(data, header = false, index) {
    var row = document.createElement("tr");
-   data.forEach((content, index) => {
-       if (colStates[index]) {
+   data.forEach((content, index2) => {
+       if (colStates[index2]) {
            const col = document.createElement(header ? "th" : "td");
            const text = document.createElement('a');
            text.innerText = content;
            col.appendChild(text);
+
+           if (content === "~NO DATA~") {
+               col.classList.add("edit");
+           }
+
+           col.onclick = () => {
+               if (header)
+                   return;
+
+               console.log(col.children[0])
+               console.log(col.children[0].type)
+               if (content === "~NO DATA~") {
+                   const input = document.createElement("input");
+                   input.setAttribute("type", "text");
+                   input.placeholder = "~NO DATA~";
+
+                   while (col.firstChild) {
+                       col.removeChild(col.firstChild);
+                   }
+                   col.appendChild(input);
+                   input.focus();
+                   input.addEventListener("keyup", function(event) {
+                       if (event.key === "Enter") {
+                           tableUpdate();
+                       } else {
+                           tables[currentData].Content[index][index2] = input.value;
+                       }
+                   });
+                   addClickEvent("newDataInputHandler", (event) => {
+                       var bounds = input.getBoundingClientRect();
+                       let mouseX = event.pageX;
+                       let mouseY = event.pageY;
+                       if (mouseX < bounds.left || mouseX > bounds.right) {
+                           tableUpdate();
+                       } else if (mouseY > bounds.bottom || mouseY < bounds.top) {
+                           tableUpdate();
+                       }
+                   });
+               }
+               console.log("  |" + content + "|  ");
+           };
 
            // Add sorting
            if (header) {
@@ -48,7 +89,7 @@ function addRow(data, header = false, index) {
    row.onclick = () => {
        if (header)
            return;
-      if (curAction = "delete") {
+      if (curAction === "delete") {
           tables[currentData].Content.splice(index, 1);
           tableUpdate();
       }
@@ -136,8 +177,13 @@ function removeDataRow() {
     curAction = "delete";
 }
 
+function addDataRow() {
+    tables[currentData].Content.push(tables[currentData].Header.reduce((a) => {a.push("~NO DATA~"); return a;}, []));
+    tableUpdate();
+}
+
 function cancelCurAction() {var body = document.querySelector('body');
-    if (curAction = "delete") {
+    if (curAction === "delete") {
         body.classList.remove("removeDataRow");
     }
     curAction = null;
@@ -169,7 +215,5 @@ function popup(query) {
                 }
             });
         }, 500);
-
-
     }
 }
