@@ -9,6 +9,7 @@
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
 </head>
 <body id="app">
 	<div id="container" class="all">
@@ -63,9 +64,16 @@
 					<button title="Download Table" onclick="downloadTable()"><i class="fas fa-download"></i></button>
 					<button title="Export Schema" onclick="exportSchema()"><i class="fas fa-receipt"></i></button>
                     <button title="Export Schema" onclick="popup('#dataFilterPopup.popuptext')"><i class="fas fa-filter"></i></button>
-					<button title="Other Options" id="otherData"><i class="fas fa-ellipsis-v"></i></button>
+					<button title="Other Options" onclick="popup('#dataOther.popuptext')"><i class="fas fa-ellipsis-v"></i></button>
                     <div id="dataFilterPopup" class="popuptext" tabindex="0">
                         "hi"
+                    </div>
+                    <div id="dataOther" class="popuptext" tabindex="0">
+                        <div class="content">
+                            <button onclick="notExist('#dataOther.popuptext')">RENAME COLUMNS</button>
+                            <button onclick="notExist('#dataOther.popuptext')">DROP COLUMNS</button>
+                            <button onclick="notExist('#dataOther.popuptext')">ETC.</button>
+                        </div>
                     </div>
 				</div>
 

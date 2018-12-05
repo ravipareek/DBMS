@@ -63,12 +63,45 @@
     width: 140px;
     margin-top: -150px;
     margin-left: -15px;
-    min-height: 100px;
 }
 
 #dataFilterPopup.popuptext::after {
     right: 18px;
 }
+
+#dataOther.popuptext {
+    opacity: 0;
+    width: 140px;
+    margin-top: -140px;
+    margin-left: -17px;
+    border-bottom-right-radius: 0px;
+    height: auto;
+}
+
+#dataOther.popuptext::after {
+    right: 0px;
+}
+
+#dataOther.popuptext > .content {
+    padding: 5px;
+}
+
+#dataOther.popuptext > .content > button {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 5px;
+    background: #e1e1e1;
+    color: #282828;
+    width: 100%;
+    border-radius: 3px;
+
+}
+
+#dataOther.popuptext > .content > button:hover {
+   background-color: #2098d1;
+
+}
+
 
 #data .name {
     font-size: 25px;
