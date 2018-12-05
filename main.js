@@ -13,8 +13,23 @@ function removeClickEvent(id) {
 
 
 function init() {
-    let model = new AppModel();
+    // Add sample data
+
+    let data = {
+        'WSJ': {
+            'Authors': [],
+            'Posts': [],
+            'Publications': [],
+            'Subscribers': [],
+        },
+        'NYTimes': {},
+        'The Post': {},
+    }
+
+
+    let model = new AppModel(data);
     let controller = new AppController(model);
+
 
     // add click listener to document
     document.addEventListener('click', (event) => {

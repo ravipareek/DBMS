@@ -79,6 +79,19 @@ body {
 	background: red;
 }
 
+.status-bar {
+	bottom: 0;
+	position: absolute;
+}
+
+.status-bar button {
+	/*position: absolute;*/
+	/*float: right;*/
+	padding: 0;
+	border: none;
+	background: none;
+}
+
 /* all */
 
 .all #connections {

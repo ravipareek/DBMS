@@ -1,29 +1,31 @@
 
 
-function AppModel() {
+function AppModel(data) {
     let connections = [];
     let activeConnection = null;
     let delegate = null;
 
     this.setDelegate = function(newDelegate) {
         delegate = newDelegate;
-        if (delegate) {
+        if (delegate)
             delegate.connectionsDidChange(connections);
-        }
     }
 
     this.addConnection = function(newConnection) {
         connections.push(newConnection);
-        delegate.connectionWasAdded(newConnection);
+        if (delegate)
+            delegate.connectionWasAdded(newConnection);
     }
     
     this.setActiveConnection = function(newConnection) {
-        delegate.activeConnectionDidChange(activeConnection, newConnection);
+        if (delegate)
+            delegate.activeConnectionDidChange(activeConnection, newConnection);
         activeConnection = newConnection;
     }    
 
     this.removeActiveConnection = function() {
-        delegate.connectionWasRemoved(activeConnection);
+        if (delegate)
+            delegate.connectionWasRemoved(activeConnection);
         connections = connections.filter(c => c !== activeConnection);
         this.setActiveConnection(null);
     }
@@ -37,9 +39,18 @@ function AppModel() {
             return connections[connections.length - 1].id + 1;
         }
     }
+
+    //
+
+    if (data) {
+        for (const [connectionName, tables] of Object.entries(data)) {
+            let newConnection = new ConnectionModel(this.makeNextId(), connectionName, tables);
+            this.addConnection(newConnection);
+        }
+    }
 }
 
-function ConnectionModel(_id, _name) {
+function ConnectionModel(_id, _name, data) {
     this.id = _id;
     this.name = _name || 'Unnamed Connection';
     let tables = [];
@@ -48,25 +59,27 @@ function ConnectionModel(_id, _name) {
 
     this.setDelegate = function(newDelegate) {
         delegate = newDelegate;
-        if (delegate) {
+        if (delegate)
             delegate.tablesDidChange(tables);
-        }
     }
 
     //
 
     this.addTable = function(newTable) {
         tables.push(newTable);
-        delegate.tableWasAdded(newTable);
+        if (delegate)
+            delegate.tableWasAdded(newTable);
     }
 
     this.setActiveTable = function(newTable) {
-        delegate.activeTableDidChange(activeTable, newTable);
+        if (delegate)
+            delegate.activeTableDidChange(activeTable, newTable);
         activeTable = newTable;
     }
 
     this.removeActiveTable = function() {
-        delegate.tableWasRemoved(activeTable);
+        if (delegate)
+            delegate.tableWasRemoved(activeTable);
         tables = tables.filter(t => t !== activeTable);
         this.setActiveTable(null)
     }
@@ -78,6 +91,15 @@ function ConnectionModel(_id, _name) {
             return 0;
         } else {
             return tables[tables.length - 1].id + 1;
+        }
+    }
+
+    //
+
+    if (data) {
+        for (const [tableName, records] of Object.entries(data)) {
+            let newTable = new TableModel(this.makeNextId(), tableName);
+            this.addTable(newTable);
         }
     }
 }
