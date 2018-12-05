@@ -1,0 +1,9 @@
+CREATE TABLE [dbo].[test_table]
+(
+      [ID] BIGINT NOT NULL IDENTITY(1,1)
+    , [Authour_ID] DATETIME NOT NULL
+    , [Publisher_ID] INT NOT NULL
+    , [Total_SUBS] INT NULL DEFAULT((1))
+    , [CategoryID] INT NULL
+    , CONSTRAINT [PK_ID] PRIMARY KEY ([WorkOutID] ASC)
+)

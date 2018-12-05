@@ -216,3 +216,17 @@ function popup(query) {
         }, 500);
     }
 }
+
+function downloadTable() {
+    var link = document.createElement("a");
+    link.download = currentData+".csv";
+    link.href = "./download/table.csv";
+    link.click();
+}
+
+function exportSchema() {
+    var link = document.createElement("a");
+    link.download = currentData+"_Schema";
+    link.href = "./download/tableSchema";
+    link.click();
+}
