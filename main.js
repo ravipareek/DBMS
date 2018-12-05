@@ -22,8 +22,17 @@ function init() {
             'Publications': [],
             'Subscribers': [],
         },
-        'NYTimes': {},
-        'The Post': {},
+        'NYTimes': {
+            'Podcasts': [],
+            'Best Sellers': [],
+            'Articles': [],
+            'Journalists': [],
+        },
+        'The Post': {
+            'Posts': [],
+            'Sections': [],
+            'Publishers': [],
+        },
     }
 
 

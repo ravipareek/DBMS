@@ -159,6 +159,10 @@ function ConnectionController(_connection, _parent) {
         if (oldTableDiv) {
             oldTableDiv.parentNode.removeChild(oldTableDiv);
         }
+        if (!document.querySelector('#tables .table')) {
+            document.querySelector('#tables .empty-item').classList.add('active');
+        }
+        setEmptyTable();
     }
 
     this.tablesDidChange = function(newTables) {
