@@ -98,3 +98,28 @@
     cursor: pointer;
 }
 
+.removeDataRow > div > #connections, .removeDataRow > div > #tables{
+    opacity: 0.5 !important;
+}
+
+
+.removeDataRow #data {
+   background: #383838;
+}
+
+.removeDataRow .status-bar button:hover{
+    color: black;
+}
+.removeDataRow .status-bar .cancel{
+    visibility: visible;
+    background: white;
+}
+.removeDataRow .status-bar button.cancel:hover{
+    visibility: visible;
+    background: white;
+    color: gray;
+}
+
+.status-bar .cancel{
+    visibility: hidden;
+}
