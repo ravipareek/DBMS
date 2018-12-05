@@ -1,40 +1,43 @@
 const posts = {
-    "Header":["ID", "Authour_ID", "Release-Date"],
+    "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
     "Content":[
-        [1, 3, new Date()],
-        [2, 5, new Date()],
-        [3, 3, new Date()],
-        [4, 5, new Date()]
+        [1, 3, new Date(), new Date(), new Date(), new Date()],
+        [2, 5, new Date(), new Date(), new Date(), new Date()],
+        [3, 3, new Date(), new Date(), new Date(), new Date()],
+        [4, 5, new Date(), new Date(), new Date(), new Date()]
     ]
 };
 
 var currentData = {};
+var colStates = [];
 
 function addRow( data, header = false) {
    var row = document.createElement("tr");
-   data.forEach((content) => {
-        const col = document.createElement(header ? "th" : "td");
-        const text = document.createElement('a');
-        text.innerText = content;
-        col.appendChild(text);
+   data.forEach((content, index) => {
+       if (colStates[index]) {
+           const col = document.createElement(header ? "th" : "td");
+           const text = document.createElement('a');
+           text.innerText = content;
+           col.appendChild(text);
 
-        // Add sorting
-        if (header) {
-            const up = document.createElement('i');
-            up.className = "far fa-arrow-alt-circle-up";
-            col.appendChild(up);
+           // Add sorting
+           if (header) {
+               const up = document.createElement('i');
+               up.className = "far fa-arrow-alt-circle-up";
+               col.appendChild(up);
 
-            const down = document.createElement('i');
-            down.className = "far fa-arrow-alt-circle-down";
-            col.appendChild(down);
-        }
-        row.appendChild(col)
+               const down = document.createElement('i');
+               down.className = "far fa-arrow-alt-circle-down";
+               col.appendChild(down);
+           }
+           row.appendChild(col)
+       }
    });
    return row;
 
 }
 
-function addColOption(data) {
+function addColOption(data, num) {
     let container = document.createElement('div');
     let input = document.createElement('input');
     let text = document.createElement('a');
@@ -49,15 +52,42 @@ function addColOption(data) {
     container.appendChild(input);
     container.appendChild(text);
 
+    input.addEventListener('change', (event) => {
+        colStates[num] = event.srcElement.checked;
+        //Ensure at minimum one element is active
+        if(!colStates.reduce((a,b) => { return b ? b : a }, false))
+            colStates[num] = event.srcElement.checked = true;
+        colStates[num] = event.srcElement.checked;
+        tableUpdate();
+    });
+
     return container;
 }
 
 function selectTable(tableName = "posts") {
+    currentData = posts;
+    colStates = [];
+
+    // Fill data options
+    let optionsHolder = document.querySelector("#tableDataOptions .popuptext");
+    while (optionsHolder.firstChild) {
+        optionsHolder.removeChild(optionsHolder.firstChild);
+    }
+
+    posts.Header.forEach((content,index) => {
+        colStates[index] = true;
+        optionsHolder.appendChild(addColOption(content, index));
+    });
+
+    tableUpdate();
+}
+
+function tableUpdate() {
     let tableHolder = document.getElementById("tableData");
     let table = document.createElement("table");
 
-    table.appendChild(addRow(posts.Header, true));
-    posts.Content.forEach((content) => {
+    table.appendChild(addRow(currentData.Header, true));
+    currentData.Content.forEach((content) => {
         table.appendChild(addRow(content));
     });
 
@@ -65,15 +95,6 @@ function selectTable(tableName = "posts") {
         tableHolder.removeChild(tableHolder.firstChild);
     }
     tableHolder.appendChild(table);
-
-    // Fill data options
-    let optionsHolder = document.querySelector("#tableDataOptions .popuptext");
-    while (optionsHolder.firstChild) {
-        optionsHolder.removeChild(optionsHolder.firstChild);
-    }
-    posts.Header.forEach((content) => {
-        optionsHolder.appendChild(addColOption(content));
-    });
 }
 
 function popup(query) {
