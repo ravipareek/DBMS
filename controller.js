@@ -18,7 +18,10 @@ function AppController(_model) {
         model.addConnection(newConnection);
     }
     document.getElementById('removeConnection').onclick = () => {
-        model.removeActiveConnection();
+        let result = confirm("Are you sure you want to delete the selected DBMS connection?");
+        if (result) {
+            model.removeActiveConnection();
+        }
     }
 
     // Column management
@@ -129,7 +132,10 @@ function ConnectionController(_connection, _parent) {
         connection.addTable(newTable);
     }
     document.getElementById('removeTable').onclick = () => {
-        connection.removeActiveTable();
+        let result = confirm("Are you sure you want to delete the selected table?");
+        if (result) {
+            connection.removeActiveTable();
+        }
     }
 
 
