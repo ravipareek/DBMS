@@ -25,14 +25,23 @@ function AppController(_model) {
 
     this.showAllColumns = function() {
         document.getElementById('container').className = 'all';
+        document.getElementById('data').className = 'content show';
+        document.getElementById('tables').className = 'content show';
+        document.getElementById('connections').className = 'content show';
     }
 
     this.showAllButData = function() {
         document.getElementById('container').className = 'noData';
+        document.getElementById('data').className = 'content hide';
+        document.getElementById('tables').className = 'content show';
+        document.getElementById('connections').className = 'content show';
     }
 
     this.showOnlyConnections = function() {
         document.getElementById('container').className = 'onlyConnections';
+        document.getElementById('data').className = 'content hide';
+        document.getElementById('tables').className = 'content hide';
+        document.getElementById('connections').className = 'content show';
     }
 
     document.getElementById('showAllButton').onclick = () => {
