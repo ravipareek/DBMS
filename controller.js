@@ -31,7 +31,7 @@ function AppController(_model) {
             const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data))
             var anchorElement = document.querySelector('#connections a.downloadLink');
             anchorElement.href = dataStr;
-            anchorElement.download = filename +'.json';
+            anchorElement.download = filename + '.json';
             anchorElement.click();
         }
     };
@@ -147,6 +147,18 @@ function ConnectionController(_connection, _parent) {
             connection.removeActiveTable();
         }
     }
+
+    document.getElementById('downloadTable').onclick = () => {
+        const result = connection.downloadActiveTable();
+        if (result) {
+            const [filename, data] = result;
+            const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data))
+            var anchorElement = document.querySelector('#tables a.downloadLink');
+            anchorElement.href = dataStr;
+            anchorElement.download = filename + '.json';
+            anchorElement.click();
+        }
+    };
 
     this.tableWasAdded = function(newTable) {
         let emptyItemDiv = document.querySelector('#tables .empty-item.active');

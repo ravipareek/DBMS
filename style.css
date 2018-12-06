@@ -262,13 +262,19 @@ body {
 .popuptext  {
 	display: none;
 	width: 140px;
-	background-color: #555;
-	color: #fff;
+	background-color: #fff;
+	color: #000;
 	text-align: center;
 	border-radius: 6px;
 	padding: 8px 0;
 	position: absolute;
 	z-index: 1;
+}
+
+#connections .popuptext,
+#tables .popuptext {
+	background-color: #fff;
+	color: #000;
 }
 
 .popuptext::after {
@@ -280,19 +286,25 @@ body {
 	position: absolute;
 	pointer-events: none;
 	border-color: transparent;
-	border-top-color: #555;
+	border-top-color: #fff;
 	border-width: 10px;
+}
+
+#connections .popuptext::after,
+#tables .popuptext::after {
+	border-top-color: #fff;
 }
 
 #tablePopup.popuptext {
 	opacity: 0;
-	margin-top: -150px;
-	margin-left: -15px;
+	width: 200px;
+	margin-top: -128px;
+	margin-left: -70px;
 	min-height: 100px;
 }
 
 #tablePopup.popuptext::after {
-	right: 76px;
+	right: 100px;
 }
 
 #connectionPopup.popuptext {
@@ -335,4 +347,10 @@ body {
 #tablePopup.popuptext span,
 #connectionPopup.popuptext span {
 	padding-left: 5px;
+}
+
+.withShadow {
+	-webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
 }

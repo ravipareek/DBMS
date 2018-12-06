@@ -106,6 +106,12 @@ function ConnectionModel(_id, _name, data) {
         this.setActiveTable(null)
     }
 
+    this.downloadActiveTable = function() {
+        if (activeTable) {
+            return [activeTable.name, activeTable.dataAsJSON()];
+        }
+    }
+
     //
 
     this.makeNextId = function() {
