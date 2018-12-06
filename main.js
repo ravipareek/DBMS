@@ -15,23 +15,36 @@ function removeClickEvent(id) {
 function init() {
     // Add sample data
 
+    let __schema = new SchemaModel({
+        'id': 'int',
+        'name': 'string',
+        'location': 'string'
+    });
+
+    let __records = [
+        new RecordModel(1, [1, 'John', 'Hamilton']),
+        new RecordModel(2, [2, 'Jane', 'Toronto']),
+        new RecordModel(3, [3, 'Lucas', 'Montreal']),
+        new RecordModel(4, [4, 'Bill', 'Buffalo']),
+    ];
+
     let data = {
         'WSJ': {
-            'Authors': [],
-            'Posts': [],
-            'Publications': [],
-            'Subscribers': [],
+            'Authors': {schema: __schema, records: __records},
+            'Posts': {schema: __schema, records: __records},
+            'Publications': {schema: __schema, records: __records},
+            'Subscribers': {schema: __schema, records: __records},
         },
         'NYTimes': {
-            'Podcasts': [],
-            'Best Sellers': [],
-            'Articles': [],
-            'Journalists': [],
+            'Podcasts': {schema: __schema, records: __records},
+            'Best Sellers': {schema: __schema, records: __records},
+            'Articles': {schema: __schema, records: __records},
+            'Journalists': {schema: __schema, records: __records},
         },
         'The Post': {
-            'Blog': [],
-            'Sections': [],
-            'Publishers': [],
+            'Blog': {schema: __schema, records: __records},
+            'Sections': {schema: __schema, records: __records},
+            'Publishers': {schema: __schema, records: __records},
         },
     }
 
@@ -46,4 +59,13 @@ function init() {
             clickEvents[index](event);
         }
     });
+}
+
+function zip(xs, ys) {
+    const length = Math.min(xs.length, ys.length);
+    var zipped = [];
+    for (var i = 0; i < length; ++i) {
+        zipped.push([xs[i], ys[i]]);
+    }
+    return zipped;
 }

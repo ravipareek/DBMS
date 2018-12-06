@@ -15,15 +15,19 @@
 	<div id="container" class="all">
 		<div id="connections" class="content">
 			<h1>Databases</h1>
+            <div class="list"></div>
+
+            <a class="downloadLink"></a>
+
 			<div class="status-bar">
 				<button id="removeConnection" title="Remove Connection"><i class="fas fa-minus"></i></button>
 				<button id="addConnection" title="Add Connection"><i class="fas fa-plus"></i></button>
 				<button id="otherConnection" onclick="popup('#connectionPopup.popuptext')"title="Other Options"><i class="fas fa-ellipsis-v"></i></button>
                 <div id="connectionPopup" class="popuptext" tabindex="0">
-                    <div><i class="fas fa-download"></i>Download</div>
-                    <div><i class="fas fa-receipt"></i>Export Schema</div>
-                    <div><i class="fas fa-sync-alt"></i>Test Connection</div>
-                    <div><i class="fas fa-edit"></i>Edit Schema</div>
+                    <div id="downloadConnection"><i class="fas fa-download"></i><span>Download</span></div>
+                    <div><i class="fas fa-receipt"></i><span>Export Schema</span></div>
+                    <div><i class="fas fa-sync-alt"></i><span>Test Connection</span></div>
+                    <div><i class="fas fa-edit"></i><span>Edit Schema</span></div>
                 </div>
 			</div>
 		</div>
@@ -32,6 +36,9 @@
 			<div class="empty-item active">
 				No Tables...
 			</div>
+            <div class="list">
+                
+            </div>
 			<div class="status-bar">
 				<button id="removeTable" title="Remove Table"><i class="fas fa-minus"></i></button>
 				<button id="addTable" title="Add Table"><i class="fas fa-plus"></i></button>

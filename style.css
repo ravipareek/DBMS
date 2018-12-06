@@ -75,9 +75,18 @@ body {
 	position: relative;
 }
 
+.list {
+	max-height: 576px;
+	overflow: auto;
+}
+
 #connections {
 	background-color: #D5D5D5;
 	color: #282828;
+}
+
+#connections a.downloadLink {
+	display: none;
 }
 
 #tables {
@@ -289,13 +298,13 @@ body {
 #connectionPopup.popuptext {
 	opacity: 0;
 	width: 200px;
-	margin-top: -150px;
+	margin-top: -160px;
 	margin-left: -70px;
 	min-height: 100px;
 }
 
 #connectionPopup.popuptext::after {
-	right: 80px;
+	right: 100px;
 }
 
 #tablePopup.popuptext,
@@ -304,16 +313,26 @@ body {
 	padding: 10px;
 }
 
-/*#tablePopup.popuptext > div,*/
+#tablePopup.popuptext,
 #connectionPopup.popuptext {
 	min-height: 2em;
 	line-height: 2em;
 	padding: 2px 10px;
 }
 
-/*#tablePopup.popuptext > div:hover,*/
+#tablePopup.popuptext > div:hover,
 #connectionPopup.popuptext > div:hover {
 	background-color: #2066D9;
 	color: white;
 	font-weight: bolder;
+}
+
+#tablePopup.popuptext i,
+#connectionPopup.popuptext i {
+	min-width: 20px;
+}
+
+#tablePopup.popuptext span,
+#connectionPopup.popuptext span {
+	padding-left: 5px;
 }

@@ -16,6 +16,14 @@ function AppModel(data) {
         if (delegate)
             delegate.connectionWasAdded(newConnection);
     }
+
+    this.dataAsJSON = function() {
+        let data = {};
+        for (const connection of connections) {
+            data[connection.name] = connection.dataAsJSON();
+        }
+        return data;
+    }
     
     this.setActiveConnection = function(newConnection) {
         if (delegate)
@@ -28,6 +36,12 @@ function AppModel(data) {
             delegate.connectionWasRemoved(activeConnection);
         connections = connections.filter(c => c !== activeConnection);
         this.setActiveConnection(null);
+    }
+
+    this.downloadActiveConnection = function() {
+        if (activeConnection) {
+            return [activeConnection.name, activeConnection.dataAsJSON()];
+        }
     }
 
     //
@@ -52,7 +66,7 @@ function AppModel(data) {
 
 function ConnectionModel(_id, _name, data) {
     this.id = _id;
-    this.name = _name || 'Unnamed Connection';
+    this.name = _name || 'Default #' + this.id;
     let tables = [];
     let activeTable = null;
     let delegate = null;
@@ -61,6 +75,14 @@ function ConnectionModel(_id, _name, data) {
         delegate = newDelegate;
         if (delegate)
             delegate.tablesDidChange(tables);
+    }
+
+    this.dataAsJSON = function() {
+        let data = {};
+        for (const table of tables) {
+            data[table.name] = table.dataAsJSON();
+        }
+        return data;
     }
 
     //
@@ -97,22 +119,30 @@ function ConnectionModel(_id, _name, data) {
     //
 
     if (data) {
-        for (const [tableName, records] of Object.entries(data)) {
-            let newTable = new TableModel(this.makeNextId(), tableName);
+        for (const [tableName, tableData] of Object.entries(data)) {
+            let newTable = new TableModel(this.makeNextId(), tableName, tableData.schema, tableData.records);
             this.addTable(newTable);
         }
     }
 }
 
-function TableModel(_id, _name, _schema) {
+function TableModel(_id, _name, _schema, _records) {
     this.id = _id;
     this.name = _name || 'Unnamed Table';
     let schema = _schema;
-    let records = []
+    let records = _records || [];
     let delegate = null;
 
     this.setDelegate = function(newDelegate) {
         delegate = newDelegate;
+    }
+
+    this.dataAsJSON = function() {
+        let data = [];
+        for (const record of records) {
+            data.push(record.dataAsJSON(schema));
+        }
+        return data;
     }
 
     this.addRecord = function(newRecord) {
@@ -142,12 +172,24 @@ function TableModel(_id, _name, _schema) {
     }
 }
 
-function RecordModel(_id, _value) {
+function RecordModel(_id, _values) {
     this.id = _id;
-    let value = _value;
+    let values = _values;
+
+    this.dataAsJSON = function(schema) {
+        let data = {};
+        for (const [key, value] of zip(schema.columns(), values)) {
+            data[key] = value;
+        }
+        return data;
+    }
 }
 
 function SchemaModel(_keyValue) {
     let keyValue = _keyValue;
+
+    this.columns = function() {
+        return Object.keys(keyValue);
+    }
 }
 
