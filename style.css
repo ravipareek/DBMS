@@ -179,13 +179,19 @@ body {
 .show {
 	opacity: 1 !important;
 	-webkit-animation: fadeIn 0.4s;
-	animation: fadeIn 0.4s
+	animation: fadeIn 0.4s;
+	z-index: 100;
+	display: block !important;
 }
 
 .hide {
 	opacity: 0 !important;
 	-webkit-animation: fadeOut 0.2s;
-	animation: fadeOut 0.2s
+	animation: fadeOut 0.2s;
+}
+
+.hidePost {
+	display: none !important;;
 }
 
 @-webkit-keyframes fadeIn {
@@ -245,6 +251,7 @@ body {
 }
 
 .popuptext  {
+	display: none;
 	width: 140px;
 	background-color: #555;
 	color: #fff;

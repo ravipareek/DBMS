@@ -29,7 +29,7 @@ function init() {
             'Journalists': [],
         },
         'The Post': {
-            'Posts': [],
+            'Blog': [],
             'Sections': [],
             'Publishers': [],
         },

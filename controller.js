@@ -160,7 +160,7 @@ function ConnectionController(_connection, _parent) {
                 .classList.add('active');
             tableController = new TableController(newActive);
             newActive.setDelegate(tableController);
-            selectTable(newActive.name)
+            selectTable(`${connection.name}:${newActive.name}`);
         }
         if (parent)
             parent.activeTableDidChange(oldActive, newActive);
