@@ -134,7 +134,7 @@ function ConnectionModel(_id, _name, data) {
 
 function TableModel(_id, _name, _schema, _records) {
     this.id = _id;
-    this.name = _name || 'Unnamed Table';
+    this.name = _name || 'Default #' + this.id;
     let schema = _schema;
     let records = _records || [];
     let delegate = null;
