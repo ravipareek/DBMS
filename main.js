@@ -27,6 +27,7 @@ function init() {
             'Best Sellers': [],
             'Articles': [],
             'Journalists': [],
+            'Authors': [],
         },
         'The Post': {
             'Blog': [],
