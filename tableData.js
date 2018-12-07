@@ -185,7 +185,7 @@ function addKeyPopup(x, y, index) {
     }
 
     let popupDiv = document.createElement('div');
-    popupDiv.setAttribute("class", `popuptext class${index}`);
+    popupDiv.setAttribute("class", `popuptext withShadow class${index}`);
     popupDiv.setAttribute("tabindex", "0");
     popupDiv.setAttribute("id", "dataKeyLink");
     popupDiv.style = `top: ${y}; left:${x}`;
