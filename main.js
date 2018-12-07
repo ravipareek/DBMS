@@ -40,6 +40,7 @@ function init() {
             'Best Sellers': {schema: __schema, records: __records},
             'Articles': {schema: __schema, records: __records},
             'Journalists': {schema: __schema, records: __records},
+            'Authors': {schema: __schema, records: __records},
         },
         'The Post': {
             'Blog': {schema: __schema, records: __records},

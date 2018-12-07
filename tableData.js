@@ -141,33 +141,32 @@ const tables = {
         ]
     }, "The Post:Blog": {
         "name": "Blog",
-        "lookup":[1, "WSJ:Authors"],
-        "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
+        "lookup":[1, "The Post:Publishers"],
+        "Header":["ID", "Publisher_ID", "Name", "Release-Date", "Views", "Rating"],
         "Content":[
-            [1, 3, new Date(), new Date(), new Date(), new Date()],
-            [2, 5, new Date(), new Date(), new Date(), new Date()],
-            [3, 3, new Date(), new Date(), new Date(), new Date()],
-            [4, 5, new Date(), new Date(), new Date(), new Date()]
+            [1, 2, "iPhone XS is not worth it", new Date(), 26731, 8.3],
+            [3, 1, "Kanye West for 2022", new Date(), 5765137, 6.1],
+            [2, 2, "Student Study Tips", new Date(), 378137, 8.8],
+            [4, 3, "New Super Food - Cheese", new Date(), 3163, 3.7]
         ]
     }, "The Post:Sections": {
         "name": "Sections",
-        "lookup":[1, "WSJ:Authors"],
-        "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
+        "lookup":[2, "The Post:Blog"],
+        "Header":["ID", "Section", "Blog_ID"],
         "Content":[
-            [1, 3, new Date(), new Date(), new Date(), new Date()],
-            [2, 5, new Date(), new Date(), new Date(), new Date()],
-            [3, 3, new Date(), new Date(), new Date(), new Date()],
-            [4, 5, new Date(), new Date(), new Date(), new Date()]
+            [1, "Tech", 1],
+            [2, "Political", 3],
+            [3, "Health", 4],
+            [4, "Daily Life", 2]
         ]
     }, "The Post:Publishers": {
         "name": "Publishes",
-        "lookup":[1, "WSJ:Authors"],
-        "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
+        "Header":["ID", "Name","Date of Birth"],
         "Content":[
-            [1, 3, new Date(), new Date(), new Date(), new Date()],
-            [2, 5, new Date(), new Date(), new Date(), new Date()],
-            [3, 3, new Date(), new Date(), new Date(), new Date()],
-            [4, 5, new Date(), new Date(), new Date(), new Date()]
+            [1, "Jason Todd", new Date()],
+            [2, "Tim Drake", new Date()],
+            [3, "Damian Wayne", new Date()],
+            [4, "Dick Grayson", new Date()]
         ]
     },
     "default": {
