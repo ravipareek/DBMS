@@ -80,6 +80,9 @@ function AppController(_model) {
                 .classList.add('active');
             connectionController = new ConnectionController(newActive, this);
             newActive.setDelegate(connectionController);
+
+            document.querySelector('#tables .content-container').classList.remove('inactive');
+            document.querySelector('#tables .empty-container').classList.remove('active');
         }
         setEmptyTable();
             
