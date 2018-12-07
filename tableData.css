@@ -54,7 +54,7 @@
 #tableDataOptions .popuptext::after {
     left: 100%;
     border-color: transparent;
-    border-left-color: #555;
+    border-left-color: #fff;
     border-width: 10px;
     top: 8px;
 }

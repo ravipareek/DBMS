@@ -1,7 +1,6 @@
 const tables = {
     "WSJ:Authors": {
         "name": "Authors", // The name of the table we are viewing
-        "lookup":[1, "WSJ:Posts"], // [The position of the foreign key in the row, the table the foreign key relates to]
         "Header":["ID", "Pen-Name", "Location", "Birthday"], // Note first item in the table MUST be ID
         "Content":[
             [1, "Jeff", "Toronto, Ontario", new Date()],
@@ -12,7 +11,7 @@ const tables = {
         ]
     }, "WSJ:Posts": {
         "name": "Posts",
-        "lookup":[1, "WSJ:Authors"],
+        "lookup":[1, "WSJ:Authors"], // [The position of the foreign key in the row, the table the foreign key relates to]
         "Header":["ID", "Authour_ID", "Release-Date", "views", "shares", "up-votes", "down-votes"],
         "Content":[
             [1, 3, new Date(), 500, 12, 56, 200],

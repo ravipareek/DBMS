@@ -75,9 +75,18 @@ body {
 	position: relative;
 }
 
+.list {
+	max-height: 576px;
+	overflow: auto;
+}
+
 #connections {
 	background-color: #D5D5D5;
 	color: #282828;
+}
+
+#connections a.downloadLink {
+	display: none;
 }
 
 #tables {
@@ -253,13 +262,19 @@ body {
 .popuptext  {
 	display: none;
 	width: 140px;
-	background-color: #555;
-	color: #fff;
+	background-color: #fff;
+	color: #000;
 	text-align: center;
 	border-radius: 6px;
 	padding: 8px 0;
 	position: absolute;
 	z-index: 1;
+}
+
+#connections .popuptext,
+#tables .popuptext {
+	background-color: #fff;
+	color: #000;
 }
 
 .popuptext::after {
@@ -271,31 +286,37 @@ body {
 	position: absolute;
 	pointer-events: none;
 	border-color: transparent;
-	border-top-color: #555;
+	border-top-color: #fff;
 	border-width: 10px;
+}
+
+#connections .popuptext::after,
+#tables .popuptext::after {
+	border-top-color: #fff;
 }
 
 #tablePopup.popuptext {
 	opacity: 0;
-	margin-top: -150px;
-	margin-left: -15px;
+	width: 200px;
+	margin-top: -128px;
+	margin-left: -70px;
 	min-height: 100px;
 }
 
 #tablePopup.popuptext::after {
-	right: 76px;
+	right: 100px;
 }
 
 #connectionPopup.popuptext {
 	opacity: 0;
 	width: 200px;
-	margin-top: -150px;
+	margin-top: -160px;
 	margin-left: -70px;
 	min-height: 100px;
 }
 
 #connectionPopup.popuptext::after {
-	right: 80px;
+	right: 100px;
 }
 
 #tablePopup.popuptext,
@@ -304,16 +325,32 @@ body {
 	padding: 10px;
 }
 
-/*#tablePopup.popuptext > div,*/
+#tablePopup.popuptext,
 #connectionPopup.popuptext {
 	min-height: 2em;
 	line-height: 2em;
 	padding: 2px 10px;
 }
 
-/*#tablePopup.popuptext > div:hover,*/
+#tablePopup.popuptext > div:hover,
 #connectionPopup.popuptext > div:hover {
 	background-color: #2066D9;
 	color: white;
 	font-weight: bolder;
+}
+
+#tablePopup.popuptext i,
+#connectionPopup.popuptext i {
+	min-width: 20px;
+}
+
+#tablePopup.popuptext span,
+#connectionPopup.popuptext span {
+	padding-left: 5px;
+}
+
+.withShadow {
+	-webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
 }

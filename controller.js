@@ -16,13 +16,25 @@ function AppController(_model) {
         var newConnection = new ConnectionModel(
             model.makeNextId());
         model.addConnection(newConnection);
-    }
+    };
     document.getElementById('removeConnection').onclick = () => {
         let result = confirm("Are you sure you want to delete the selected DBMS connection?");
         if (result) {
             model.removeActiveConnection();
         }
-    }
+    };
+
+    document.getElementById('downloadConnection').onclick = () => {
+        const result = model.downloadActiveConnection();
+        if (result) {
+            const [filename, data] = result;
+            const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data))
+            var anchorElement = document.querySelector('#connections a.downloadLink');
+            anchorElement.href = dataStr;
+            anchorElement.download = filename + '.json';
+            anchorElement.click();
+        }
+    };
 
     // Column management
 
@@ -51,7 +63,7 @@ function AppController(_model) {
 
     this.connectionWasAdded = function(newConnection) {
         let newConnectionDiv = makeConnectionDiv(newConnection);
-        document.getElementById('connections').appendChild(
+        document.querySelector('#connections .list').appendChild(
             newConnectionDiv);
     }
     this.activeConnectionDidChange = function(oldActive, newActive) {
@@ -83,9 +95,7 @@ function AppController(_model) {
         document.querySelectorAll('#connections .connection')
             .forEach(e => e.parentNode.removeChild(e));
         for (const newConnection of newConnections) {
-            let newConnectionDiv = makeConnectionDiv(newConnection);
-            document.getElementById('connections')
-                .appendChild(newConnectionDiv);
+            this.connectionWasAdded(newConnection);
         }
     }
 
@@ -138,13 +148,25 @@ function ConnectionController(_connection, _parent) {
         }
     }
 
+    document.getElementById('downloadTable').onclick = () => {
+        const result = connection.downloadActiveTable();
+        if (result) {
+            const [filename, data] = result;
+            const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data))
+            var anchorElement = document.querySelector('#tables a.downloadLink');
+            anchorElement.href = dataStr;
+            anchorElement.download = filename + '.json';
+            anchorElement.click();
+        }
+    };
 
     this.tableWasAdded = function(newTable) {
         let emptyItemDiv = document.querySelector('#tables .empty-item.active');
         if (emptyItemDiv)
             emptyItemDiv.classList.remove('active');
         let newTableDiv = makeTableDiv(newTable);
-        document.getElementById('tables').appendChild(newTableDiv);
+        document.querySelector('#tables .list')
+            .appendChild(newTableDiv);
     }
     this.activeTableDidChange = function(oldActive, newActive) {
         if (oldActive) {
