@@ -94,43 +94,50 @@ const tables = {
         ]
     }, "NYTimes:Podcasts": {
         "name": "Podcasts",
-        "lookup":[1, "WSJ:Authors"],
-        "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
+        "lookup":[1, "NYTimes:Journalists"],
+        "Header":["ID", "Journalist_ID", "Release-Date", "Duration", "Downloads (Thousands)"],
         "Content":[
-            [1, 3, new Date(), new Date(), new Date(), new Date()],
-            [2, 5, new Date(), new Date(), new Date(), new Date()],
-            [3, 3, new Date(), new Date(), new Date(), new Date()],
-            [4, 5, new Date(), new Date(), new Date(), new Date()]
+            [1, 1, new Date(), "2:00:29","5.3"],
+            [2, 1, new Date(), "1:30:40","8"],
+            [3, 2, new Date(), "0:45:12","12"],
+            [4, 3, new Date(), "1:23:32",'3']
         ]
     }, "NYTimes:Best Sellers": {
         "name": "Sellers",
-        "lookup":[1, "WSJ:Authors"],
-        "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
+        "lookup":[1, "NYTimes:Authors"],
+        "Header":["ID", "Author_ID", "Title", "Release-Date", "Sales (Million)"],
         "Content":[
-            [1, 3, new Date(), new Date(), new Date(), new Date()],
-            [2, 5, new Date(), new Date(), new Date(), new Date()],
-            [3, 3, new Date(), new Date(), new Date(), new Date()],
-            [4, 5, new Date(), new Date(), new Date(), new Date()]
+            [1, 1, "The Great Gatsby", new Date(),2.5],
+            [2, 3, "Harry Potter and the Chamber of Secrets", new Date(),6.3],
+            [3, 3, "Harry Potter and the Deathly Hallows", new Date(),8.9],
+            [4, 2, "To Kill a Mockingbird", new Date(),10]
         ]
     }, "NYTimes:Articles": {
         "name": "Articles",
-        "lookup":[1, "WSJ:Authors"],
-        "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
+        "lookup":[1, "NYTimes:Journalists"],
+        "Header":["ID", "Journalist_ID", "Release-Date", "Title", "Views"],
         "Content":[
-            [1, 3, new Date(), new Date(), new Date(), new Date()],
-            [2, 5, new Date(), new Date(), new Date(), new Date()],
-            [3, 3, new Date(), new Date(), new Date(), new Date()],
-            [4, 5, new Date(), new Date(), new Date(), new Date()]
+            [1, 1, new Date(), "", 2481],
+            [2, 1, new Date(), "", 3618],
+            [3, 1, new Date(), "", 446],
+            [4, 4, new Date(), "", 54613]
         ]
     }, "NYTimes:Journalists": {
         "name": "Journalists",
-        "lookup":[1, "WSJ:Authors"],
-        "Header":["ID", "Authour_ID", "Release-Date", "s", "a", "d"],
+        "Header":["ID", "Name", "Date of Birth", "Location"],
         "Content":[
-            [1, 3, new Date(), new Date(), new Date(), new Date()],
-            [2, 5, new Date(), new Date(), new Date(), new Date()],
-            [3, 3, new Date(), new Date(), new Date(), new Date()],
-            [4, 5, new Date(), new Date(), new Date(), new Date()]
+            [1, "John Smith", new Date(), "Hamilton, Ontario"],
+            [2, "Kunal Shah", new Date(), "Ottawa, Ontario"],
+            [3, "Jason English", new Date(), "Paris, France"],
+            [4, "Bill McNeal", new Date(), "Miami, Florida"]
+        ]
+    },"NYTimes:Authors": {
+        "name": "Authors",
+        "Header":["ID", "Name","Pen Name", "Date of Birth", "Location"],
+        "Content":[
+            [1, "Francis Scott Key Fitzgerald","F. Scott Fitzgerald", new Date(), "Hamilton, Ontario"],
+            [2, "Harper Lee","Harper Lee", new Date(), "Atlanta, Georgia"],
+            [3, "Joanne Kathleen Rowling","JK Rowling", new Date(), "London, England"]
         ]
     }, "The Post:Blog": {
         "name": "Blog",
