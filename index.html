@@ -32,24 +32,31 @@
 			</div>
 		</div>
 		<div id="tables" class="content">
-			<h1>Tables</h1>
-			<div class="empty-item active">
-				No Tables...
-			</div>
-            <div class="list"></div>
+            <div class="empty-container active">
+                <div class="empty-area">No Tables...</div>
+            </div>
 
-            <a class="downloadLink"></a>
+            <div class="content-container inactive">
+    			<h1>Tables</h1>
+    			<div class="empty-item active">
+    				Add Tables...
+    			</div>
+                <div class="list"></div>
 
-			<div class="status-bar">
-				<button id="removeTable" title="Remove Table"><i class="fas fa-minus"></i></button>
-				<button id="addTable" title="Add Table"><i class="fas fa-plus"></i></button>
-				<button id="otherTable" onclick="popup('#tablePopup.popuptext')" title="Other Options"><i class="fas fa-ellipsis-v"></i></button>
-                <div id="tablePopup" class="popuptext withShadow" tabindex="0">
-                    <div id="downloadTable"><i class="fas fa-download"></i><span>Download</span></div>
-                    <div><i class="fas fa-receipt"></i><span>Export Schema</span></div>
-                    <div><i class="fas fa-edit"></i><span>Edit Schema</span></div>
-                </div>
-			</div>
+                <a class="downloadLink"></a>
+
+    			<div class="status-bar">
+    				<button id="removeTable" title="Remove Table"><i class="fas fa-minus"></i></button>
+    				<button id="addTable" title="Add Table"><i class="fas fa-plus"></i></button>
+    				<button id="otherTable" onclick="popup('#tablePopup.popuptext')" title="Other Options"><i class="fas fa-ellipsis-v"></i></button>
+                    <div id="tablePopup" class="popuptext withShadow" tabindex="0">
+                        <div id="downloadTable"><i class="fas fa-download"></i><span>Download</span></div>
+                        <div><i class="fas fa-receipt"></i><span>Export Schema</span></div>
+                        <div><i class="fas fa-edit"></i><span>Edit Schema</span></div>
+                    </div>
+    			</div>
+            </div>
+
 		</div>
 		<div id="data" class="content">
 			<div class="empty-container active">
